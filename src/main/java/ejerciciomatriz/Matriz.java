@@ -17,6 +17,7 @@ public class Matriz {
      */
     public static void main(String[] args) {
         MetodosMatriz matriz = new MetodosMatriz();
+        
         ArrayList<Integer> lista = new ArrayList<>();
         matriz.mostrarMatriz();
 
@@ -44,7 +45,8 @@ public class Matriz {
             System.out.print(integer + " , ");
         }
         System.out.println("");
-
+        System.out.println("Con doble bucle for------");
+        matriz.recorrerVecinasConFor(2, 2);
     }
 
 }

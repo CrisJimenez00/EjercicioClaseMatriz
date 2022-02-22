@@ -18,7 +18,7 @@ public class MetodosMatriz {
 
     public MetodosMatriz() {
         random = new Random();
-        int numero = random.nextInt(7) + 3;
+        int numero = random.nextInt(6) + 4;
         this.matriz = new int[numero][numero];
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
@@ -30,10 +30,12 @@ public class MetodosMatriz {
     public ArrayList<Integer> recorrerFila(int i) {
         ArrayList<Integer> lista = new ArrayList<>();
 
-        for (int j = 0; j < matriz.length; j++) {
-            if (j == i) {
-                for (int k = 0; k < matriz[i].length; k++) {
-                    lista.add(matriz[j][k]);
+        if (i >= 0 && i < matriz.length) {
+            for (int j = 0; j < matriz.length; j++) {
+                if (j == i) {
+                    for (int k = 0; k < matriz[i].length; k++) {
+                        lista.add(matriz[j][k]);
+                    }
                 }
             }
         }
@@ -44,12 +46,14 @@ public class MetodosMatriz {
     public ArrayList<Integer> recorrerColumna(int j) {
         ArrayList<Integer> lista = new ArrayList<>();
 
-        for (int i = 0; i < matriz.length; i++) {
-            for (int k = 0; k < matriz[i].length; k++) {
-                if (k == j) {
+        if (j >= 0 && j < matriz.length) {
+            for (int i = 0; i < matriz.length; i++) {
+                for (int k = 0; k < matriz[i].length; k++) {
+                    if (k == j) {
 
-                    lista.add(matriz[i][k]);
+                        lista.add(matriz[i][k]);
 
+                    }
                 }
             }
         }
@@ -57,6 +61,7 @@ public class MetodosMatriz {
         return lista;
     }
 
+    //metodo el cual coge las posiciones vecinas con coordenadas
     public ArrayList<Integer> recorrerVecinas(int i, int j) {
         ArrayList<Integer> lista = new ArrayList<>();
         System.out.println("El número centrar es: " + matriz[i][j]);
@@ -81,6 +86,35 @@ public class MetodosMatriz {
         return lista;
     }
 
+    //matriz recoge numero vecinos con doble bucle for
+    public void recorrerVecinasConFor(int fila, int columna) {
+        System.out.println("El número centrar es: " + matriz[fila][columna]);
+        System.out.println("La vecina es: ");
+
+        //Primero que los valores metidos por parámetros son correctos
+        if (fila < matriz.length && fila >= 0) {
+            if (columna < matriz[fila].length && columna >= 0) {
+
+                //Recorremos la matriz y miramos que no se salga con if
+                for (int i = fila - 1; i <= fila + 1; i++) {
+
+                    if (i < matriz.length && i >= 0) {
+
+                        for (int j = columna - 1; j <= columna + 1; j++) {
+
+                            if (j < matriz[i].length && j >= 0) {
+                                System.out.print(matriz[i][j] + "\t");
+
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+    //metodo el cual imprime la matriz
     public void mostrarMatriz() {
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
